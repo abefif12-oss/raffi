@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrian SPMB - SMA Negeri 1 Magetan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="header-text">
+                    <h1>SISTEM ANTRIAN SPMB</h1>
+                    <h2>SMA NEGERI 1 MAGETAN</h2>
+                    <p class="subtitle">Penerimaan Peserta Didik Baru Tahun Ajaran 2024/2025</p>
+                </div>
+            </div>
+            <div class="datetime">
+                <div id="current-date"></div>
+                <div id="current-time"></div>
+            </div>
+        </header>
+
+        <main>
+            <div class="content-wrapper">
+                <div class="left-panel">
+                    <div class="display-section">
+                        <div class="display-header">
+                            <h3><i class="fas fa-user-clock"></i> ANTRIAN SAAT INI</h3>
+                        </div>
+                        <div class="current-queue-display">
+                            <div class="queue-number" id="current-queue">-</div>
+                            <div class="queue-operator" id="current-operator">-</div>
+                            <div class="counter-number" id="current-counter">-</div>
+                        </div>
+                        
+                        <div class="queue-history">
+                            <h4><i class="fas fa-history"></i> Riwayat Panggilan</h4>
+                            <div class="history-list" id="history-list">
+                                <!-- Riwayat antrian akan muncul di sini -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="operator-section">
+                        <h3><i class="fas fa-users"></i> STATUS OPERATOR</h3>
+                        <div class="operators-grid" id="operators-container">
+                            <!-- Operator akan di-generate oleh JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-panel">
+                    <div class="control-panel">
+                        <h3><i class="fas fa-sliders-h"></i> PANEL KONTROL</h3>
+                        
+                        <div class="control-group">
+                            <label for="queue-number"><i class="fas fa-ticket-alt"></i> Nomor Antrian</label>
+                            <div class="input-group">
+                                <input type="text" id="queue-number" placeholder="Contoh: A012">
+                                <button id="generate-btn" class="btn-secondary">
+                                    <i class="fas fa-random"></i> Generate
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="operator-select"><i class="fas fa-user-tie"></i> Tujuan Operator</label>
+                            <select id="operator-select">
+                                <option value="">-- Pilih Operator --</option>
+                                <!-- Opsi operator akan diisi oleh JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="counter-number"><i class="fas fa-desktop"></i> Nomor Loket</label>
+                            <select id="counter-number">
+                                <option value="">-- Pilih Loket --</option>
+                                <option value="Loket 1">Loket 1</option>
+                                <option value="Loket 2">Loket 2</option>
+                                <option value="Loket 3">Loket 3</option>
+                                <option value="Loket 4">Loket 4</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-buttons">
+                            <button id="call-btn" class="btn-primary">
+                                <i class="fas fa-bullhorn"></i> PANGGIL ANTRIAN
+                            </button>
+                            <button id="repeat-btn" class="btn-secondary">
+                                <i class="fas fa-redo-alt"></i> ULANGI PANGGILAN
+                            </button>
+                            <button id="next-btn" class="btn-success">
+                                <i class="fas fa-forward"></i> ANTRIAN SELANJUTNYA
+                            </button>
+                            <button id="reset-btn" class="btn-danger">
+                                <i class="fas fa-undo-alt"></i> RESET ANTRIAN
+                            </button>
+                        </div>
+                        
+                        <div class="sound-control">
+                            <label for="volume-control"><i class="fas fa-volume-up"></i> Volume Suara</label>
+                            <input type="range" id="volume-control" min="0" max="1" step="0.1" value="0.8">
+                            <div class="volume-text">Volume: <span id="volume-value">80%</span></div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <h4><i class="fas fa-info-circle"></i> Petunjuk</h4>
+                            <ul>
+                                <li>Masukkan nomor antrian atau klik "Generate" untuk membuat nomor acak</li>
+                                <li>Pilih operator tujuan dan nomor loket</li>
+                                <li>Klik "Panggil Antrian" untuk memanggil nomor antrian dengan suara</li>
+                                <li>Gunakan "Ulangi Panggilan" untuk mengulangi panggilan terakhir</li>
+                                <li>Status operator akan berubah ketika sedang melayani</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <p>SMA Negeri 1 Magetan - Jl. Pahlawan No. 17, Magetan, Jawa Timur</p>
+                <p>Telp: (0351) 123456 | Email: spmb@sman1magetan.sch.id</p>
+                <p class="copyright">© 2024 Sistem Antrian SPMB SMA Negeri 1 Magetan. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Notification Element -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
